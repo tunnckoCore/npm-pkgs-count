@@ -23,8 +23,8 @@
     "url": "https://github.com/tunnckoCore/npm-pkgs-count/blob/master/license.md"
   },
   "dependencies": {
-    "cheerio": "^0.19.0",
-    "got": "^2.5.0"
+    "cheerio": "~0.19.0",
+    "got": "~2.5.0"
   },
   "devDependencies": {
     "istanbul-harmony": "~0.3.1",

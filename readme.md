@@ -17,9 +17,6 @@ var npmPkgsCount = require('npm-pkgs-count');
 ```
 
 
-## API / CLI
-
-
 ## Author
 **Charlike Mike Reagent**
 + [gratipay/tunnckoCore][author-gratipay]
