@@ -17,7 +17,21 @@
     "type": "git",
     "url": "git://github.com/tunnckoCore/npm-pkgs-count.git"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "cli",
+    "count",
+    "get",
+    "helpers",
+    "npm",
+    "npmjs",
+    "number",
+    "packages",
+    "pkg",
+    "profile",
+    "user",
+    "utils"
+  ],
   "license": {
     "type": "MIT",
     "url": "https://github.com/tunnckoCore/npm-pkgs-count/blob/master/license.md"
