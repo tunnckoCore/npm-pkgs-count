@@ -1,19 +1,57 @@
 ## [![npm][npmjs-img]][npmjs-url] [![mit license][license-img]][license-url] [![build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![deps status][daviddm-img]][daviddm-url]
 
-> Count npm user packages from npmjs.com website profile. API and CLI.
+> Count npm user packages from [npmjs.com](http://npm.im) website profile. API and CLI.
 
 ## Install
 ```
 npm i --save npm-pkgs-count
 npm test
+npm-pkgs-count --help
 ```
 
 
-## Usage
+## API
 > For more use-cases see the [tests](./test.js)
 
+### [npmPkgsCount](./index.js#L41)
+> Count packages of the given [npmjs.com](http://npm.im) user
+
+- `<username>` **{String}**  non emptry string, npm username
+- `<callback>` **{Function}** node-style callback `(err, res)`
+
+**Example**
 ```js
 var npmPkgsCount = require('npm-pkgs-count');
+
+npmPkgsCount('tunnckocore', function _cb(err, cnt) {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(cnt);
+  //=> 96
+
+  console.log(typeof cnt);
+  //=> number
+});
+```
+
+
+## CLI
+> run `npm-pkgs-count --help` or try this one
+
+```
+npm i -g npm-pkgs-count
+
+npm-pkgs-count tunnckocore
+
+  Aloha, master!
+
+  ℹ Please wait a moment...
+  ℹ We fetching data from https://www.npmjs.com
+
+  ✔ 96 packages by tunnckocore
+
 ```
 
 
@@ -56,4 +94,4 @@ Released under the [`MIT`][license-url] license.
 
 ***
 
-_Powered and automated by [kdf](https://github.com/tunnckoCore), March 26, 2015_
+_Powered and automated by [kdf](https://github.com/tunnckoCore), March 28, 2015_

@@ -7,28 +7,57 @@
 
 'use strict';
 
+var is = require('is-kindof');
 var got = require('got');
 var cheerio = require('cheerio');
 
-module.exports = function npmPkgs(username, callback) {
-  if (!username) {
-    throw new Error('[npm-pkgs] expect at least 2 arguments');
+var url = 'https://www.npmjs.com/~';
+var selector = '#packages';
+
+/**
+ * > Count packages of the given [npmjs.com](http://npm.im) user
+ *
+ * **Example**
+ * ```js
+ * var npmPkgsCount = require('npm-pkgs-count');
+ *
+ * npmPkgsCount('tunnckocore', function _cb(err, cnt) {
+ *   if (err) {
+ *     console.error(err);
+ *     return;
+ *   }
+ *   console.log(cnt);
+ *   //=> 96
+ *
+ *   console.log(typeof cnt);
+ *   //=> number
+ * });
+ * ```
+ *
+ * @name   npmPkgsCount
+ * @param  {String}   `<username>` non emptry string, npm username
+ * @param  {Function} `<callback>` node-style callback `(err, res)`
+ * @api public
+ */
+module.exports = function npmPkgsCount(username, callback) {
+  if (!is.string(username)) {
+    throw new TypeError('[npm-pkgs-count] expect `username` to be string');
   }
-  if (typeof username !== 'string' && !username.length) {
-    throw new TypeError('[npm-pkgs] expect `username` be non-empty string');
+  if (username.length === 0) {
+    throw new Error('[npm-pkgs-count] expect `username` to be non empty string');
   }
-  if (typeof callback !== 'function') {
-    throw new TypeError('[npm-pkgs] expect 2nd argument be function');
+  if (!is.function(callback)) {
+    throw new TypeError('[npm-pkgs-count] expect `callback` to be function');
   }
 
-  return got.get('https://www.npmjs.com/~' + username, function _cb(err, res) {
+  return got.get(url + username, function _cb(err, res) {
     if (err) {
       callback(err);
       return;
     }
 
     var $ = cheerio.load(res);
-    var count = $('#packages').text().split(/\s+/)[1];
+    var count = $(selector).text().split(/\s+/)[1];
     callback(null, Number(count));
   });
 };
