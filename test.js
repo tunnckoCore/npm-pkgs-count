@@ -53,6 +53,7 @@ describe('npm-pkgs-count:', function() {
       assert.ifError(err);
       assert.strictEqual(res > 90, true);
       assert.strictEqual(!Array.isArray(res), true);
+      assert.strictEqual(typeof res, 'number');
       done();
     });
   });
