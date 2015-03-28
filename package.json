@@ -1,6 +1,6 @@
 {
   "name": "npm-pkgs-count",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Count npm user packages from npmjs.com website profile. API and CLI.",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",
