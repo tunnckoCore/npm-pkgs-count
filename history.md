@@ -1,5 +1,9 @@
 
 
+## v1.0.1 / March 30, 2015
+- Release v1.0.1 / npm@v1.0.1
+- replace `is-kindof` with `assert-kindof`
+
 ## v1.0.0 / March 28, 2015
 - Release v1.0.0 / npm@v1.0.0
 - update tests
