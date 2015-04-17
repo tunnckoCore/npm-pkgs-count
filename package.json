@@ -40,7 +40,7 @@
     "assertit": "^0.1.0",
     "chalk": "~1.0.0",
     "cheerio": "~0.19.0",
-    "got": "~2.5.0",
+    "got": "~2.7.0",
     "log-symbols": "~1.0.2",
     "meow": "~3.1.0",
     "multiline": "~1.0.2"
