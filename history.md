@@ -1,5 +1,13 @@
 
 
+## v1.0.2 / April 18, 2015
+- Release v1.0.2 / npm@v1.0.2
+- bump got@~v2.7.0
+- replace mocha and assert-kindof with assertit
+- run npm-related(1)
+- update tests
+- remove coveralls.yml
+
 ## v1.0.1 / March 30, 2015
 - Release v1.0.1 / npm@v1.0.1
 - replace `is-kindof` with `assert-kindof`
