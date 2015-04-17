@@ -8,7 +8,7 @@
 
 'use strict';
 
-var is = require('assert-kindof');
+var is = require('assertit').is;
 var meow = require('meow');
 var chalk = require('chalk');
 var npmPkgsCount = require('./index');

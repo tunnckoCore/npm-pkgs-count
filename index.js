@@ -7,7 +7,7 @@
 
 'use strict';
 
-var is = require('assert-kindof');
+var is = require('assertit').is;
 var got = require('got');
 var cheerio = require('cheerio');
 

@@ -7,12 +7,11 @@
 
 'use strict';
 
-var is = require('assert-kindof');
-var assert = require('assert');
+var test = require('assertit');
 var npmPkgsCount = require('./index');
 
-describe('npm-pkgs-count:', function() {
-  it('should throw TypeError when `username` is not a string', function(done) {
+test('npm-pkgs-count:', function() {
+  test('should throw TypeError when `username` is not a string', function(done) {
     function fixture() {
       npmPkgsCount({one: 'two'});
     }
@@ -20,25 +19,25 @@ describe('npm-pkgs-count:', function() {
     try {
       fixture();
     } catch(e) {
-      is.number(e.line);
-      assert.strictEqual(e.actual, 'object');
-      assert.strictEqual(e.expected, 'string');
-      assert.strictEqual(e.problem, 'actual !== expected');
-      assert.strictEqual(/to be string, but object given/.test(e.message), true);
-      assert.throws(fixture, /to be string, but object given/);
-      assert.throws(fixture, TypeError);
+      test.is.number(e.line);
+      test.equal(e.actual, 'object');
+      test.equal(e.expected, 'string');
+      test.equal(e.problem, 'actual !== expected');
+      test.equal(/to be string, but object given/.test(e.message), true);
+      test.throws(fixture, /to be string, but object given/);
+      test.throws(fixture, TypeError);
       done();
     }
   });
-  it('should throw Error when `username` is an empty string or array', function(done) {
+  test('should throw Error when `username` is an empty string or array', function(done) {
     function fixture() {
       npmPkgsCount('');
     }
-    assert.throws(fixture, /expect `username` to be non empty string/);
-    assert.throws(fixture, Error);
+    test.throws(fixture, /expect `username` to be non empty string/);
+    test.throws(fixture, Error);
     done();
   });
-  it('should throw TypeError when `callback` is not a function', function(done) {
+  test('should throw TypeError when `callback` is not a function', function(done) {
     function fixture() {
       npmPkgsCount('tunnckocore', [1, 2, 3]);
     }
@@ -46,34 +45,30 @@ describe('npm-pkgs-count:', function() {
     try {
       fixture();
     } catch(e) {
-      is.number(e.line);
-      assert.strictEqual(e.actual, 'array');
-      assert.strictEqual(e.expected, 'function');
-      assert.strictEqual(e.problem, 'actual !== expected');
-      assert.strictEqual(/to be function, but array given/.test(e.message), true);
-      assert.throws(fixture, /to be function, but array given/);
-      assert.throws(fixture, TypeError);
+      test.is.number(e.line);
+      test.equal(e.actual, 'array');
+      test.equal(e.expected, 'function');
+      test.equal(e.problem, 'actual !== expected');
+      test.equal(/to be function, but array given/.test(e.message), true);
+      test.throws(fixture, /to be function, but array given/);
+      test.throws(fixture, TypeError);
       done();
     }
   });
-  it('should work properly when existing user given and callback', function(done) {
-    this.timeout(30000);
-
+  test('should work properly when existing user given and callback', function(done) {
     npmPkgsCount('tunnckocore', function _cb(err, cnt) {
-      assert.ifError(err);
-      is.number(cnt);
-      assert.strictEqual(cnt > 90, true);
+      test.ifError(err);
+      test.is.number(cnt);
+      test.equal(cnt > 90, true);
       done();
     });
   });
-  it('should error when non existing user given', function(done) {
-    this.timeout(30000);
-
+  test('should error when non existing user given', function(done) {
     npmPkgsCount('fjk43hkjhhhhhhhhhhhhhhhkjgg3k4g234', function _cb(err, cnt) {
-      is.number(err.code);
-      is.undefined(cnt);
-      assert.strictEqual(err instanceof Error, true);
-      assert.strictEqual(err.code, 404);
+      test.is.number(err.code);
+      test.is.undefined(cnt);
+      test.equal(err instanceof Error, true);
+      test.equal(err.code, 404);
       done();
     });
   });
